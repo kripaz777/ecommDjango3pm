@@ -7,6 +7,7 @@ class Category(models.Model):
 	name = models.CharField(max_length = 300)
 	slug = models.CharField(max_length = 300)
 	image = models.ImageField(upload_to = 'media')
+	status = models.CharField(choices = STATUS,blank = True, max_length = 100)
 
 	def __str__(self):
 		return self.name
@@ -36,6 +37,7 @@ class Product(models.Model):
 class Ad(models.Model):
 	name = models.CharField(max_length = 300)
 	image = models.ImageField(upload_to = 'media')
+	rank = models.IntegerField(null = True)
 	description = models.TextField()
 	def __str__(self):
 		return self.name

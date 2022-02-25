@@ -35,10 +35,10 @@
 			<div class="tab-head ">
 				<nav class="nav-sidebar">
 					<ul class="nav tabs ">
-					  <li class="active"><a href="#tab1" data-toggle="tab">Staples</a></li>
-					  <li class=""><a href="#tab2" data-toggle="tab">Snacks</a></li> 
-					  <li class=""><a href="#tab3" data-toggle="tab">Fruits & Vegetables</a></li>  
-					  <li class=""><a href="#tab4" data-toggle="tab">Breakfast & Cereal</a></li>
+						{% for cat in categories %}
+					  <li class="{{cat.status}}"><a href="#tab1" data-toggle="tab">{{cat.name}}</a></li>
+						{% endfor %}
+					  
 					</ul>
 				</nav>
 				<div class=" tab-content tab-content-t ">
@@ -441,11 +441,11 @@
 <!--content-->
 <div class="content-mid">
 	<div class="container">
-		
+		{% for ads in ads1 %}
 		<div class="col-md-4 m-w3ls">
 			<div class="col-md1 ">
 				<a href="kitchen.html">
-					<img src="images/co1.jpg" class="img-responsive img" alt="">
+					<img src="{{ads.image.url}}" class="img-responsive img" alt="">
 					<div class="big-sa">
 						<h6>New Collections</h6>
 						<h3>Season<span>ing </span></h3>
@@ -454,10 +454,13 @@
 				</a>
 			</div>
 		</div>
+		{% endfor %}
+		{% for ads in ads2 %}
+
 		<div class="col-md-4 m-w3ls1">
 			<div class="col-md ">
 				<a href="hold.html">
-					<img src="images/co.jpg" class="img-responsive img" alt="">
+					<img src="{{ads.image.url}}" class="img-responsive img" alt="">
 					<div class="big-sale">
 						<div class="big-sale1">
 							<h3>Big <span>Sale</span></h3>
@@ -467,25 +470,30 @@
 				</a>
 			</div>
 		</div>
+		{% endfor %}
 		<div class="col-md-4 m-w3ls">
+			{% for ads in ads3 %}
 			<div class="col-md2 ">
 				<a href="kitchen.html">
-					<img src="images/co2.jpg" class="img-responsive img1" alt="">
+					<img src="{{ads.image.url}}" class="img-responsive img1" alt="">
 					<div class="big-sale2">
 						<h3>Cooking <span>Oil</span></h3>
 						<p>It is a long established fact that a reader </p>		
 					</div>
 				</a>
 			</div>
+			{% endfor %}
+			{% for ads in ads3 %}
 			<div class="col-md3 ">
 				<a href="hold.html">
-					<img src="images/co3.jpg" class="img-responsive img1" alt="">
+					<img src="{{ads.image.url}}" class="img-responsive img1" alt="">
 					<div class="big-sale3">
 						<h3>Vegeta<span>bles</span></h3>
 						<p>It is a long established fact that a reader </p>
 					</div>
 				</a>
 			</div>
+			{% endfor %}
 		</div>
 		<div class="clearfix"></div>
 	</div>

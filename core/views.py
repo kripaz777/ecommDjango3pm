@@ -10,7 +10,11 @@ class HomeView(BaseView):
 		self.views['categories'] = Category.objects.all()
 		self.views['subcategories'] = SubCategory.objects.all()
 		self.views['products'] = Product.objects.all()
-		self.views['ads'] = Ad.objects.all()
+		self.views['ads1'] = Ad.objects.filter(rank = 1)
+		self.views['ads2'] = Ad.objects.filter(rank = 2)
+		self.views['ads3'] = Ad.objects.filter(rank = 3)
+		self.views['ads4'] = Ad.objects.filter(rank = 4)
+
 		self.views['sliders'] = Slider.objects.all()
 
 		return render(request,'index.html',self.views)
