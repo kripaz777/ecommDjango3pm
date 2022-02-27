@@ -18,3 +18,10 @@ class HomeView(BaseView):
 		self.views['sliders'] = Slider.objects.all()
 
 		return render(request,'index.html',self.views)
+
+class SubCategoryView(BaseView):
+	def get(self,request,slug):
+		subcat = SubCategory.objects.get(slug = slug).id
+		self.views['subcat_products'] = Product.objects.filter(subcategory_id = subcat)
+		self.views['subcat_title'] = SubCategory.objects.get(slug = slug).name
+		return render(request,'subcategory.html',self.views)
