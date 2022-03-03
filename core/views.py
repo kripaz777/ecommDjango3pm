@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.views.generic import View
 from .models import *
 # Create your views here.
@@ -34,4 +34,32 @@ class SearchView(BaseView):
 			self.views['search_name'] = query
 			self.views['search_product'] = Product.objects.filter(name__icontains = query)
 		return render(request,'search.html',self.views)
+
+from django.contrib.auth.models import User
+from django.contrib import messages
+def signup(request):
+	if request.method == "POST":
+		username = request.POST['username']
+		email = request.POST['email']
+		password = request.POST['password']
+		cpassword = request.POST['cpassword']
+		if password == cpassword:
+			if User.objects.filter(username = username).exists():
+				messages.error(request,"The username is already usded.")
+				return redirect('signup')
+
+			elif User.objects.filter(email = email).exists():
+				messages.error(request,"The email is already used.")
+				return redirect('signup')
+
+			else:
+				user = User.objects.create_user(
+					username = username,
+					email = email,
+					password = password
+					)
+				user.save()
+				return redirect('/')
+
+	return render(request,'register.html')
 
