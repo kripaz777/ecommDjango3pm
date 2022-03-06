@@ -11,7 +11,9 @@
 </div>
 
 <!--login-->
-
+{% for message in messages %}
+						<center><font color = "red" >{{message}}</font></center>
+						{% endfor %}
 	<div class="login">
 		<div class="main-agileits">
 				<div class="form-w3agile form1">
@@ -19,6 +21,7 @@
 					<form method="POST">
 						{% csrf_token %}
 						<div class="key">
+							
 							<i class="fa fa-user" aria-hidden="true"></i>
 							<input  type="text"  name="username" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Username';}" required="">
 							<div class="clearfix"></div>

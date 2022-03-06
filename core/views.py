@@ -46,11 +46,11 @@ def signup(request):
 		if password == cpassword:
 			if User.objects.filter(username = username).exists():
 				messages.error(request,"The username is already usded.")
-				return redirect('signup')
+				return redirect('core:signup')
 
 			elif User.objects.filter(email = email).exists():
 				messages.error(request,"The email is already used.")
-				return redirect('signup')
+				return redirect('core:signup')
 
 			else:
 				user = User.objects.create_user(
@@ -60,6 +60,9 @@ def signup(request):
 					)
 				user.save()
 				return redirect('/')
+		else:
+			messages.error(request,"The email is already used.")
+			return redirect('core:signup')
 
 	return render(request,'register.html')
 

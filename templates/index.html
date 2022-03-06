@@ -190,7 +190,7 @@
 							{% for product in products %}
 							<div class="col-md-3 pro-1">
 								<div class="col-m">
-								<a href="#" data-toggle="modal" data-target="#{{product.id}}" class="offer-img">
+								<a href="#{{product.id}}" data-toggle="modal" data-target="#{{product.slug}}" class="offer-img">
 										<img src="{{product.image.url}}" class="img-responsive" alt="">
 									</a>
 									<div class="mid-1">
@@ -215,7 +215,7 @@
 								</div>
 							</div>
 
-							<div class="modal fade" id="{{product.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal fade" id="{{product.slug}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 				<div class="modal-dialog" role="document">
 					<div class="modal-content modal-info">
 						<div class="modal-header">
