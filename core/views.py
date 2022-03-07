@@ -26,6 +26,10 @@ class SubCategoryView(BaseView):
 		self.views['subcat_title'] = SubCategory.objects.get(slug = slug).name
 		return render(request,'subcategory.html',self.views)
 
+class DetailView(BaseView):
+	def get(self,request,slug):
+		self.views['detail_products'] = Product.objects.filter(id = slug)
+		return render(request,'single.html',self.views)
 
 class SearchView(BaseView):
 	def get(self,request):

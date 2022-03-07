@@ -21,9 +21,6 @@
 
 					<form method="POST">
 						{% csrf_token %}
-						{% for message in messages %}
-						<center><font color = "red" >{{message}}</font></center>
-						{% endfor %}
 						<div class="key">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
 							{{form.username}}
