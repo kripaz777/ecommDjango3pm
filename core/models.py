@@ -51,3 +51,23 @@ class Slider(models.Model):
 	status = models.CharField(choices = STATUS,blank = True, max_length = 100)
 	def __str__(self):
 		return self.name
+
+
+class Cart(models.Model):
+	user = models.CharField(max_length = 300)
+	product_id = models.IntegerField()
+	items = models.ForeignKey(Product,on_delete = models.CASCADE)
+	quantity = models.IntegerField()
+	checkout = models.BooleanField(default = False)
+	total = models.IntegerField(default = 1)
+	
+	def __str__(self):
+		return self.user
+
+class Contact(models.Model):
+	name = models.CharField(max_length = 400)
+	email = models.EmailField(max_length = 400,blank = True)
+	message = models.TextField()
+
+	def __str__(self):
+		return self.name
